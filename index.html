@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Rest Countries API</title>
+
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+
+    <body>
+        
+        <!-- Header -->
+        <header>
+            <h1 class="title">Where in the world?</h1>
+            <button class="light-dark-toggle" type="button"><i class="fa-solid fa-moon" aria-hidden="true"></i>Dark Mode</button> 
+        </header>
+
+        <!-- Main -->
+        <main class="main">
+
+            <!-- Form -->
+            <form class="form" action="#">
+                <div class="country-search-container">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <label class="sr-only" for="country-search">Search for a country</label>
+                    <input
+                        class="country-search"
+                        type="search"
+                        id="country-search"
+                        name="country-search"
+                        minlength="1"
+                        placeholder="Search for a country...">
+                </div>
+    
+                <fieldset class="region-filter-container">
+                    <legend class="region-filter-legend">
+                        <button
+                            class="region-filter-btn"
+                            type="button"
+                            aria-controls="region-list"
+                            aria-expanded="false">Filter by Region</button>
+                        <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
+                    </legend>
+                    
+                    <div class="region-list" id="region-list">
+                        <input class="sr-only radio" type="radio" id="all" name="region" value="all" checked>
+                        <label class="region" for="all">All</label>
+                        
+                        <input class="sr-only radio" type="radio" id="africa" name="region" value="africa">
+                        <label class="region" for="africa">Africa</label>
+                        
+                        <input class="sr-only radio" type="radio" id="america" name="region" value="america">
+                        <label class="region" for="america">America</label>
+                        
+                        <input class="sr-only radio" type="radio" id="asia" name="region" value="asia">
+                        <label class="region" for="asia">Asia</label>
+                        
+                        <input class="sr-only radio" type="radio" id="europe" name="region" value="europe">
+                        <label class="region" for="europe">Europe</label>
+                        
+                        <input class="sr-only radio" type="radio" id="oceania" name="region" value="oceania">
+                        <label class="region" for="oceania">Oceania</label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <!-- Search Results -->
+            <section class="results">
+
+                <h2 class="sr-only">Search Results</h2>
+
+            </section>
+
+        </main>
+
+        <!-- Featured Country -->
+        <aside class="featured">
+            <button class="back-btn" type="button"><i class="fa-solid fa-arrow-left-long"></i> Back</button>
+
+            <section class="featured-container">
+                <img class="featured-flag" src="" alt="">
+                <div class="featured-text">
+
+                    <h2 class="featured-country-name"></h2>
+
+                    <div class="demographics">
+                        <p class="datum">
+                            <span class="key">Native Name: </span>
+                            <span id="native-name"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Population: </span>
+                            <span id="population"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Region: </span>
+                            <span id="region"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Sub Region: </span>
+                            <span id="sub-region"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Capital: </span>
+                            <span id="capital"></span>
+                        </p>
+                    </div>
+
+                    <div class="additional-info">
+                        <p class="datum">
+                            <span class="key">Top Level Domain: </span>
+                            <span id="top-level-domain"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Currencies: </span>
+                            <span id="currencies"></span>
+                        </p>
+                        <p class="datum">
+                            <span class="key">Languages: </span>
+                            <span id="languages"></span>
+                        </p>
+                    </div>
+
+                    <p class="featured-border-countries">
+                        <span class="key featured-border-countries-key">Border Countries: </span>
+                        <span class="featured-border-countries-btn-group" role="group"></span>
+                    </p>
+
+                </div>
+            </section>
+
+        </aside>
+        
+        <script src="main.js"></script>
+    </body>
+
+</html>

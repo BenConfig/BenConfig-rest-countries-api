@@ -1,0 +1,375 @@
+/* ------------------------------------------------------ */
+/*                          Fonts                         */
+/* ------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+/* ------------------------------------------------------ */
+/*                    Custom Properties                   */
+/* ------------------------------------------------------ */
+:root {
+    /* -------------------- Font Weights -------------------- */
+    --fw-light: 300;
+    --fw-normal: 600;
+    --fw-bold: 800;
+
+    /* -------------------- Border Radii -------------------- */
+    --br-xs: .1875rem;
+    --br-sm: .375rem;
+
+    /* ----------------------- Colors ----------------------- */
+    --clr-placeholder: hsl(0, 0%, 60%);
+    --clr-shadow: hsla(0, 0%, 0%, .1);
+
+    /* Light Mode Colors */
+    --clr-input: hsl(0, 0%, 100%);
+    --clr-body-bg: hsl(0, 0%, 98%);
+    --clr-hover: hsl(0, 0%, 95%);
+    --clr-text: hsl(200, 15%, 8%);
+}
+
+:root.dark {
+    /* Dark Mode Colors */
+    --clr-input: hsl(210, 20%, 22%);
+    --clr-body-bg: hsl(207, 26%, 17%);
+    --clr-hover: hsl(0, 0%, 10%);
+    --clr-text: hsl(0, 0%, 100%);
+}
+
+/* ------------------------------------------------------ */
+/*                Resets and Global Styles                */
+/* ------------------------------------------------------ */
+body,
+h1, h2,
+p,
+input,
+button { margin: 0; }
+
+input,
+button {
+    min-width: 44px;
+    min-height: 44px;
+    display: block;
+    font: inherit;
+    border-radius: var(--br-sm);
+    border: none;
+    color: inherit;
+    background: var(--clr-input);
+    cursor: pointer;
+}
+
+fieldset {
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+legend { padding: 0; }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img { max-width: 100%; }
+
+*,
+*:hover,
+*::placeholder {
+    box-sizing: border-box;
+    transition: color 250ms,
+                background-color 250ms,
+                box-shadow 250ms;
+}
+
+:focus { outline: .125rem dotted var(--clr-text); }
+
+body {
+    font: var(--fw-light) .875rem/1.75 'Nunito Sans', sans-serif;
+    color: var(--clr-text);
+    background: var(--clr-body-bg);
+}
+
+.main {
+    padding-block: clamp(1.5rem, .1875rem + 5.65vw, 3rem);
+    padding-inline: clamp(1rem, -.4375rem + 6.01vw, 5rem);
+}
+
+.main.hide { display: none; }
+
+/* ------------------------------------------------------ */
+/*                         Header                         */
+/* ------------------------------------------------------ */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.0625rem clamp(1rem, -.4375rem + 6.01vw, 5rem) 1.1875rem;
+    box-shadow: 0 .125rem .5rem var(--clr-shadow);
+    background: var(--clr-input);
+}
+
+.title { font-size: clamp(.875rem, .3125rem + 2.35vw, 1.5rem); }
+
+.light-dark-toggle {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: clamp(.75rem, .5rem + .94vw, 1rem);
+    font-weight: var(--fw-normal);
+    padding: .5rem;
+    transform: translateX(.4375rem);
+}
+
+.fa-solid { font-size: 1.25em; }
+
+/* ------------------------------------------------------ */
+/*                          Form                          */
+/* ------------------------------------------------------ */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    font-size: .75rem;
+    margin-bottom: clamp(2rem, 1.125rem + 3.76vw, 3rem);
+}
+
+@media only screen and (min-width: 50em) {
+    .form {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .form > * { flex: 1; }
+}
+
+.country-search-container,
+.region-filter-btn,
+.region-list {
+    border-radius: var(--br-sm);
+    box-shadow: 0 .125rem .5rem var(--clr-shadow);
+}
+
+/* ------------------- Country Search ------------------- */
+.country-search-container {
+    position: relative;
+    max-width: 30rem;
+}
+
+.country-search {
+    width: 100%;
+    font-size: clamp(.75rem, .6875rem + .24vw, .8125rem);
+    padding-top: clamp(.875rem, .6875rem + .71vw, 1.0625rem);
+    padding-inline: 4.625rem .875rem;
+    padding-bottom: clamp(.875rem, .75rem + .47vw, 1rem);
+}
+
+.country-search::placeholder,
+.fa-magnifying-glass {
+    color: var(--clr-text);
+    opacity: .5;
+}
+
+.fa-magnifying-glass {
+    position: absolute;
+    top: 50%;
+    transform: translate(2rem, -50%);
+    font-size: clamp(.9375rem, .8375rem + .47vw, 1.0625rem);
+    pointer-events: none;
+}
+
+.country-search-container:focus-within > .fa-magnifying-glass { opacity: 1; }
+
+/* -------------------- Region Filter ------------------- */
+.region-filter-container {
+    position: relative;
+    max-width: 12.5rem;
+}
+
+.region-filter-legend {
+    position: relative;
+    width: 100%;
+}
+
+.region-filter-btn { font-size: clamp(.75rem, .6875rem + .24vw, .8125rem); }
+
+.region-filter-btn,
+.region {
+    width: 100%;
+    text-align: left;
+    padding-top: clamp(.875rem, .75rem + .71vw, 1.0625rem);
+    padding-inline: 1.5rem;
+    padding-bottom: clamp(.875rem, .75rem + .47vw, 1rem);
+}
+
+.region:hover { background: var(--clr-hover); }
+
+.fa-angle-down {
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    font-size: clamp(.625rem, .5rem + .47vw, .75rem);
+    pointer-events: none;
+}
+
+.radio:checked + .region {
+    color: var(--clr-input);
+    background: var(--clr-text);
+}
+
+/* Region List Animation */
+.region-list {
+    position: absolute;
+    top: calc(100% + .25rem);
+    left: 0;
+    width: 100%;
+    background: var(--clr-input);
+    overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 500ms;
+}
+
+.region {
+    display: block;
+    opacity: 0;
+    transition: opacity 250ms;
+    cursor: pointer;
+}
+
+.region-list.expanded { transform: scaleY(1); }
+
+.region-list.expanded .region {
+    opacity: 1;
+    transition: opacity 250ms 250ms;
+}
+
+/* ------------------------------------------------------ */
+/*                         Results                        */
+/* ------------------------------------------------------ */
+.results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    justify-items: center;
+    align-items: end;
+    gap: clamp(1rem, -.4375rem + 6.01vw, 5rem);
+}
+
+.card {
+    max-width: 16.5rem;
+    border-radius: var(--br-sm);
+    box-shadow: 0 .125rem .5rem var(--clr-shadow);
+    background: var(--clr-input);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card * { pointer-events: none; }
+
+.text { padding: .875rem 1.5rem 2.5625rem; }
+
+.country-name {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    margin-bottom: .5625rem;
+}
+
+.key { font-weight: var(--fw-normal); }
+
+.card.region-filter,
+.card.search-filter { display: none; }
+
+/* ------------------------------------------------------ */
+/*                      Country Info                      */
+/* ------------------------------------------------------ */
+.featured {
+    display: none;
+    padding-block: clamp(1.5rem, .1875rem + 5.65vw, 3rem);
+    padding-inline: clamp(1rem, -.4375rem + 6.01vw, 5rem);
+}
+
+.featured.show { display: block; }
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .875rem;
+    padding: .5rem 1.5rem;
+    border-radius: var(--br-xs);
+    box-shadow: 0 0 .5rem hsla(0, 0%, 0%, .5);
+    margin-bottom: 3.9375rem;
+}
+
+.fa-arrow-left-long { font-size: 1rem; }
+
+.featured-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4375rem;
+}
+
+.featured-flag { max-width: 40rem; }
+
+.featured-text {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.featured-country-name {
+    flex: 100%;
+    font-size: clamp(1.375rem, .8125rem + 2.35vw, 2rem);
+    margin-bottom: clamp(1rem, .8125rem + .71vw, 1.1875rem);
+}
+
+@media only screen and (min-width: 70em) {
+    .featured-container {
+        flex-direction: row;
+        gap: 7.5rem;
+    }
+
+    .featured-text { width: 50%; }
+
+    .featured-flag {
+        align-self: start;
+        width: 46.625%;
+    }
+}
+
+.demographics,
+.additional-info {
+    flex: 50%;
+    min-width: 16rem;
+    margin-bottom: 2rem;
+}
+
+.datum {
+    font-size: clamp(.875rem, .75rem + .47vw, 1rem);
+    margin-bottom: .25rem;
+}
+
+.featured-border-countries {
+    flex: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1rem;
+    margin-top: auto;
+}
+
+.featured-border-countries-key { font-size: 1rem; }
+
+.featured-border-countries-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.featured-border-country-btn {
+    padding: .5rem 1.5rem;
+    border-radius: var(--br-xs);
+    box-shadow: 0 0 .5rem hsla(0, 0%, 0%, .2);
+}
+
